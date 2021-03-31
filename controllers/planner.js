@@ -15,10 +15,15 @@ exports.addItem = (req, res, next) => {
   const steps = req.body.steps;
   const due = req.body.due;
   const item = new ListItem(title, steps, due, null);
-  item.addItem();
+  item.addItem().then((addedId) => {
+    res.json({ _id: addedId });
+  });
 };
 
 exports.deleteItem = (req, res, next) => {
   const itemId = req.body.id;
-  item.deleteById(itemId);
+  console.log(req.body);
+  ListItem.deleteById(itemId).then((result) => {
+    res.json({ success: true });
+  });
 };
