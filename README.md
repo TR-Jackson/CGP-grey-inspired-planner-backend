@@ -1,4 +1,4 @@
-# CGP Grey Inspired Planner
+# CGP Grey Inspired Planner (Backend)
 
 A MERN Fullstack planner drawing inspiration from CGP Grey's organisation system.
 
