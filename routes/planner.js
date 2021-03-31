@@ -8,6 +8,6 @@ router.get("/planner", plannerController.getPlanner);
 
 router.post("/add-item", plannerController.addItem);
 
-router.post("/remove-item", plannerController.deleteItem);
+router.post("/delete-item", plannerController.deleteItem);
 
 module.exports = router;

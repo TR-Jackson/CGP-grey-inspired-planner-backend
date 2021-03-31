@@ -14,7 +14,9 @@ class ListItem {
     return db
       .collection("planner")
       .insertOne(this)
-      .then((result) => console.log(result))
+      .then((result) => {
+        return result.insertedId;
+      })
       .catch((err) => console.log(err));
   }
 
