@@ -20,6 +20,23 @@ class ListItem {
       .catch((err) => console.log(err));
   }
 
+  updateItem() {
+    const db = getDb();
+    return db
+      .collection("planner")
+      .updateOne(
+        { _id: this._id },
+        { $set: { title: this.title, steps: this.steps, due: this.due } },
+        { upsert: true }
+      )
+      .then((result) => {
+        return result;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   static fetchAll() {
     const db = getDb();
     return db

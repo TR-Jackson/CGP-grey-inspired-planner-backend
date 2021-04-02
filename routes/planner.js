@@ -10,4 +10,6 @@ router.post("/add-item", plannerController.addItem);
 
 router.post("/delete-item", plannerController.deleteItem);
 
+router.post("/update-item", plannerController.updateItem);
+
 module.exports = router;

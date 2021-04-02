@@ -22,8 +22,19 @@ exports.addItem = (req, res, next) => {
 
 exports.deleteItem = (req, res, next) => {
   const itemId = req.body.id;
-  console.log(req.body);
   ListItem.deleteById(itemId).then((result) => {
     res.json({ success: true });
   });
+};
+
+exports.updateItem = (req, res, next) => {
+  const title = req.body.title;
+  const steps = req.body.steps;
+  const due = req.body.due;
+  const _id = req.body._id;
+  const item = new ListItem(title, steps, due, _id);
+  item
+    .updateItem()
+    .then((result) => res.json({ success: true }))
+    .catch((err) => console.log(err));
 };
