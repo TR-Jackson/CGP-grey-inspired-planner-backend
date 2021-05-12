@@ -1,11 +1,23 @@
 require("dotenv").config();
 
+const mongoose = require("mongoose");
 const express = require("express");
 const bodyParser = require("body-parser");
 
-const mongoConnect = require("./util/database").mongoConnect;
-
 const plannerRoutes = require("./routes/planner");
+
+mongoose
+  .connect(process.env.MONGO_CONNECT, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("Connected");
+    app.listen(5000);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 const app = express();
 
@@ -22,7 +34,3 @@ app.use((req, res, next) => {
 });
 
 app.use(plannerRoutes);
-
-mongoConnect(() => {
-  app.listen(5000);
-});
